@@ -1,4 +1,5 @@
 # workshop-oop
+[![Build Status](https://travis-ci.org/imamatory/workshop-oop.svg?branch=master)](https://travis-ci.org/imamatory/workshop-oop)
 
 Список тем для подготовки:
 
