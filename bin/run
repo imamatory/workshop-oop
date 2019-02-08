@@ -3,4 +3,3 @@
 const bin = require('../dist/bin.js').default;
 
 bin();
-

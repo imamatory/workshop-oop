@@ -1,16 +1,15 @@
 import axios from 'axios';
-import debug from 'debug';
 import Application from './Application';
 
 const defaultContainer = {
-  print: (message, level) => debug(level)(),
+  print: (message, level) => console.log(level, message),
+  formatData: data => JSON.stringify(data, null, 4),
   queryConfig: {},
-  fetchURL: axios,
+  fetchURL: axios.request,
 };
 
-export default async (argv = process.argv, opts = {}) => {
+export default (argv = process.argv.slice(2), opts = {}) => {
   const container = { ...defaultContainer, ...opts.container };
   const app = new Application(container, argv);
-  const result = await app.run();
-  return result;
+  return app.run();
 };

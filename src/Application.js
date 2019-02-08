@@ -9,10 +9,10 @@ export default class Application {
 
   run = async () => {
     const ip = this.args[0];
-    const { fetchURL, print } = this.container;
+    const { fetchURL, print, formatData } = this.container;
     const api = new ApiIpFetcher({ fetchURL, ip });
     const { data, error } = await api.call();
-    const output = new ConsoleOutput({ print, isError: error !== undefined });
-    output.call(data || error);
+    const output = new ConsoleOutput({ print, formatData, isError: error !== undefined });
+    output.call(data || error.code);
   }
 }
