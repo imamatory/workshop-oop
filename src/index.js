@@ -1,10 +1,5 @@
 import '@babel/polyfill';
-import debug from 'debug';
+import bin from './bin';
+import Application from './Application';
 
-const log = debug('LOG');
-export class A {}
-
-export const sum = (a, b) => {
-  log({ a, b });
-  return a + b;
-};
+export { bin, Application };
