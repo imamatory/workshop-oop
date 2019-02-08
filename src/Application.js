@@ -12,6 +12,7 @@ export default class Application {
     const { fetchURL, print, formatData } = this.container;
     const api = new ApiIpFetcher({ fetchURL, ip });
     const { data, error } = await api.call();
+    // Don't know how to work with errors in *oop-style*
     const output = new ConsoleOutput({ print, formatData, isError: error !== undefined });
     output.call(data || error.code);
   }
