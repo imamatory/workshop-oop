@@ -1,0 +1,41 @@
+{
+  "name": "workshop-oop",
+  "version": "1.0.0",
+  "description": "Workshop OOP 4 tasks",
+  "main": "index.js",
+  "repository": "https://github.com/imamatory/workshop-oop.git",
+  "author": "Vadim Safonov <imamatory@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "test": "jest",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.1.0",
+    "eslint": "^5.13.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jest": "^22.2.2",
+    "jest": "^24.1.0",
+    "jest-cli": "^24.1.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "__tests__/__fixtures__",
+      "node_modules"
+    ]
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "debug": "^4.1.1",
+    "lodash": "^4.17.11"
+  }
+}
