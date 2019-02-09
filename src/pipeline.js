@@ -15,15 +15,12 @@ class Main {
 
   static main() {
     const fileNames = fs.readdirSync('./');
-    const compositionList = [
-      array => _.filter(array, (str => !str.startsWith('.'))),
-      array => array.sort(),
-      ExtNum.middle,
-      Main.plural,
-      _.toUpper,
-      console.log,
-    ];
-    return compositionList.reduce((acc, f) => f(acc), fileNames);
+    const visibleFileNames = _.filter(fileNames, (str => !str.startsWith('.')));
+    const sorted = visibleFileNames.sort();
+    const selectedFileName = ExtNum.middle(sorted);
+    const pluralized = Main.plural(selectedFileName);
+    const uppercased = _.toUpper(pluralized);
+    console.log(uppercased);
   }
 }
 
