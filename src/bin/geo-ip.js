@@ -1,3 +1,4 @@
-import bin from '../bin';
+import cli from '../cli';
 
-bin();
+const [ip] = process.argv.slice(2);
+cli(ip);
