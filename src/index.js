@@ -1,5 +1,5 @@
 import '@babel/polyfill';
 import bin from './bin';
-import Application from './Application';
+import GeoIp from './GeoIp';
 
-export { bin, Application };
+export { bin, GeoIp };

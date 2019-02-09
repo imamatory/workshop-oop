@@ -4,7 +4,10 @@ test('fetches default ip successfully', async () => {
   const json = '{ success: true }';
   const fetchMock = () => ({ data: json });
   const container = {
-    print: (result) => { expect(result).toBe(json); },
+    print: (level, result) => {
+      expect(level).toBe('info');
+      expect(result).toBe(json);
+    },
     fetchURL: fetchMock,
     formatData: x => x,
   };
@@ -18,7 +21,10 @@ test('fetches custom ip successfully', async () => {
   // FIXME: how to test wothout diving in details?
   const fetchMock = ({ url }) => ({ data: `{ ip: ${url} }` });
   const container = {
-    print: (result) => { expect(result).toBe(json); },
+    print: (level, result) => {
+      expect(level).toBe('info');
+      expect(result).toBe(json);
+    },
     fetchURL: fetchMock,
     formatData: x => x,
   };

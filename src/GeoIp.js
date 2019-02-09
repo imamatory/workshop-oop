@@ -1,19 +1,19 @@
 import ApiIpFetcher from './ApiIpFetcher';
 import ConsoleOutput from './ConsoleOutput';
 
-export default class Application {
+export default class GeoIp {
   constructor(container, args) {
     this.container = container;
     this.args = args;
   }
 
-  run = async () => {
+  call = async () => {
     const ip = this.args[0];
     const { fetchURL, print, formatData } = this.container;
     const api = new ApiIpFetcher({ fetchURL, ip });
-    const { data, error } = await api.call();
     // Don't know how to work with errors in *oop-style*
-    const output = new ConsoleOutput({ print, formatData, isError: error !== undefined });
-    output.call(data || error.code);
+    const { data, error } = await api.call();
+    const output = new ConsoleOutput({ print, formatData });
+    output.call(data || error);
   }
 }

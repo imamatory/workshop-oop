@@ -5,9 +5,11 @@ export default class ConsoleOutput {
     this.isError = isError;
   }
 
-  getLogLevel = () => (this.isError ? 'error' : 'info')
-
   call = async (data) => {
-    this.print(data, this.getLogLevel());
+    if (data instanceof Error) {
+      this.print('error', data);
+      return;
+    }
+    this.print('info', data);
   }
 }

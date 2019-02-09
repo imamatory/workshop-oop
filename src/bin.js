@@ -1,8 +1,8 @@
 import axios from 'axios';
-import Application from './Application';
+import GeoIp from './GeoIp';
 
 const defaultContainer = {
-  print: (message, level) => console.log(level, message),
+  print: console.log,
   formatData: data => JSON.stringify(data, null, 4),
   queryConfig: {},
   fetchURL: axios.request,
@@ -10,6 +10,6 @@ const defaultContainer = {
 
 export default (argv = process.argv.slice(2), opts = {}) => {
   const container = { ...defaultContainer, ...opts.container };
-  const app = new Application(container, argv);
-  return app.run();
+  const app = new GeoIp(container, argv);
+  return app.call();
 };
