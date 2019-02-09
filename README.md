@@ -1,15 +1,16 @@
 # workshop-oop
 [![Build Status](https://travis-ci.org/imamatory/workshop-oop.svg?branch=master)](https://travis-ci.org/imamatory/workshop-oop)
 
-Run in console:
+##Usage
+In console:
 ```
-./bin/run
+geo-ip 127.0.0.1
 ```
 
-Use in code:
+In code:
 ```js
 import { GeoIp } from '...geo-ip'
 
 const app = new GeoIp();
-const result = await app.call({}, ['8.8.8.8']);
+const location = await app.fetchLocation('8.8.8.8');
 ```

@@ -4,7 +4,7 @@ install:
 	yarn install
 
 run:
-	nps babel-node ./src/bin/index.js
+	npx babel-node ./src/bin/index.js
 
 build:
 	rm -rf dist
