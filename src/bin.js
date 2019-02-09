@@ -1,15 +1,9 @@
-import axios from 'axios';
 import GeoIp from './GeoIp';
 
-const defaultContainer = {
-  print: console.log,
-  formatData: data => JSON.stringify(data, null, 4),
-  queryConfig: {},
-  fetchURL: axios.request,
-};
+const parsedArgs = process.argv.slice(2);
 
-export default (argv = process.argv.slice(2), opts = {}) => {
-  const container = { ...defaultContainer, ...opts.container };
-  const app = new GeoIp(container, argv);
-  return app.call();
+export default async (args = parsedArgs, { fetchURL, returnResult = console.log } = {}) => {
+  const geoIp = new GeoIp({ fetchURL });
+  const location = await geoIp.fetchLocation(args[0]);
+  returnResult(location);
 };

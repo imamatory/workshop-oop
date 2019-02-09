@@ -1,19 +1,17 @@
-import ApiIpFetcher from './ApiIpFetcher';
-import ConsoleOutput from './ConsoleOutput';
+import axios from 'axios';
 
 export default class GeoIp {
-  constructor(container, args) {
-    this.container = container;
-    this.args = args;
+  constructor({ fetchURL = axios.request }) {
+    this.fetchURL = fetchURL;
   }
 
-  call = async () => {
-    const ip = this.args[0];
-    const { fetchURL, print, formatData } = this.container;
-    const api = new ApiIpFetcher({ fetchURL, ip });
-    // Don't know how to work with errors in *oop-style*
-    const { data, error } = await api.call();
-    const output = new ConsoleOutput({ print, formatData });
-    output.call(data || error);
+  fetchApi = ip => this.fetchURL({
+    baseURL: 'http://ip-api.com/json/',
+    url: ip,
+  })
+
+  fetchLocation = async (ip = '') => {
+    const { data } = await this.fetchApi(ip);
+    return data;
   }
 }
